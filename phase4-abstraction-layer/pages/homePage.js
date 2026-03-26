@@ -21,15 +21,17 @@ async isLoaded(){
 
 async isBackpackVisible(){
     return await this.actions.isDisplayed(this.backpackItem)
-}
+    }
 
 async addBackpackToCart(){
+    await this.actions.waitForElement(this.backPackAddButton)
     await this.actions.clickElement(this.backPackAddButton)
-}
+    await this.actions.waitForElement(this.cartBadge)
+    }
 
 async getCartCount(){
     return await this.actions.getText(this.cartBadge)
-}
+    }
 
 }
 

@@ -1,12 +1,21 @@
 const { Builder, By, until } = require("selenium-webdriver")
+const chrome = require("selenium-webdriver/chrome")  // ✅ add this import
 
 class SeleniumActions {
 
+    constructor(){
+        const options = new chrome.Options()
+        options.setUserPreferences({
+            "credentials_enable_service": false,
+            "profile.password_manager_enabled": false,
+            "profile.password_manager_leak_detection": false  // ✅ kills the breach popup
+        })
 
-    constructor(driver){
-        this.driver = new Builder().forBrowser("chrome").build()
-        this.timeout = 5000
-    
+        this.driver = new Builder()
+            .forBrowser("chrome")
+            .setChromeOptions(options)   // ✅ pass options here
+            .build()
+        this.timeout = 10000
     }
 
     async launchSite(url){

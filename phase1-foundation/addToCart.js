@@ -1,8 +1,17 @@
 import { Builder, By, until } from "selenium-webdriver"
+import { Options } from "selenium-webdriver/chrome.js"
 
-// create driver
+const options = new Options()
+options.setUserPreferences({
+    "credentials_enable_service": false,
+    "profile.password_manager_enabled": false,
+    "profile.password_manager_leak_detection": false
+})
 
-let driver = await new Builder().forBrowser("chrome").build()
+let driver = await new Builder()
+    .forBrowser("chrome")
+    .setChromeOptions(options)
+    .build()
 
 await driver.get("https://www.saucedemo.com")
 

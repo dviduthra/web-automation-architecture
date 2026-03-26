@@ -1,4 +1,5 @@
 const { Builder } = require('selenium-webdriver')
+const chrome = require('selenium-webdriver/chrome') 
 const LoginPage = require('../pages/loginPage')
 const HomePage = require('../pages/homePage')
 
@@ -8,7 +9,14 @@ describe("Add to cart", ()=>{
     let homePage
 
     beforeAll(async()=>{
-        driver = await new Builder().forBrowser("chrome").build()
+        const options = new chrome.Options()
+        options.setUserPreferences({
+            "credentials_enable_service": false,
+            "profile.password_manager_enabled": false,
+            "profile.password_manager_leak_detection": false
+        })
+
+        driver = await new Builder().forBrowser("chrome").setChromeOptions(options).build()
         loginPage = new LoginPage(driver)
         homePage = new HomePage(driver)
 

@@ -12,6 +12,8 @@ const config = {
 
   verbose: true,
 
+  maxWorkers: 1 
+
 }
 export default config;
 

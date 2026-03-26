@@ -1,14 +1,23 @@
 const { Builder, By, until } = require('selenium-webdriver')
+const chrome = require('selenium-webdriver/chrome')
 
 describe("Add to cart", () => {
 
-let driver
+    let driver
 
-beforeAll(async() => {
+    beforeAll(async() => {
+        const options = new chrome.Options()
+        options.setUserPreferences({
+            "credentials_enable_service": false,
+            "profile.password_manager_enabled": false,
+            "profile.password_manager_leak_detection": false
+        })
 
-driver = await new Builder().forBrowser("chrome").build()
-
-})
+        driver = await new Builder()
+            .forBrowser("chrome")
+            .setChromeOptions(options)
+            .build()
+    })
 
 test("Add item to cart and verify cart badge", async() => {
 
