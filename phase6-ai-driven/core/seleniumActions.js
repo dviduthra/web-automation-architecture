@@ -1,9 +1,9 @@
 const { Builder, By, until } = require("selenium-webdriver")
-const chrome = require("selenium-webdriver/chrome")  
+const chrome = require("selenium-webdriver/chrome")
 
 class SeleniumActions {
 
-    constructor(){
+    constructor() {
         const options = new chrome.Options()
         options.setUserPreferences({
             "credentials_enable_service": false,
@@ -13,52 +13,52 @@ class SeleniumActions {
 
         this.driver = new Builder()
             .forBrowser("chrome")
-            .setChromeOptions(options)  
+            .setChromeOptions(options)
             .build()
         this.timeout = 10000
     }
 
-    async launchSite(url){
+    async launchSite(url) {
         await this.driver.get(url)
     }
 
-    async waitForElement(locator){
+    async waitForElement(locator) {
         await this.driver.wait(until.elementLocated(By.css(locator)), this.timeout)
         const element = await this.driver.findElement(By.css(locator))
         await this.driver.wait(until.elementIsVisible(element), this.timeout)
         return element
     }
 
-    async isDisplayed(locator){
+    async isDisplayed(locator) {
         const element = await this.waitForElement(locator)
         return await element.isDisplayed()
     }
 
-    async clickElement(locator){
+    async clickElement(locator) {
         const element = await this.waitForElement(locator)
         await element.click()
 
     }
 
-    async inputText(locator, text){
+    async inputText(locator, text) {
         const element = await this.waitForElement(locator)
         await element.clear()
         await element.sendKeys(text)
-        
+
 
     }
 
-    async getText(locator){
+    async getText(locator) {
         const element = await this.waitForElement(locator)
         return await element.getText()
 
     }
 
-    async getCurrentUrl(){
+    async getCurrentUrl() {
         return await this.driver.getCurrentUrl()
     }
 
-    async quit(){
+    async quit() {
         await this.driver.quit()
     }
 

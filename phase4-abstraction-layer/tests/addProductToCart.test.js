@@ -2,7 +2,7 @@ const LoginPage = require('../pages/loginPage')
 const HomePage = require('../pages/homePage')
 const SeleniumActions = require('../core/seleniumActions')
 
-describe("Saucedemo Locked Login", ()=>{
+describe("Add product to cart", ()=>{
     let actions
     let loginPage
     let homePage

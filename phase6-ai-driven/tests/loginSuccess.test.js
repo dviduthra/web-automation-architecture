@@ -2,28 +2,28 @@ const LoginPage = require('../pages/loginPage')
 const HomePage = require('../pages/homePage')
 const DriverFactory = require('../core/driverFactory')
 
-describe("Add product to cart", ()=>{
+describe("Saucedemo Login", () => {
     let actions
     let loginPage
     let homePage
 
-    beforeAll(async()=>{
+    beforeAll(async () => {
         actions = DriverFactory.getDriver()
         loginPage = new LoginPage(actions)
         homePage = new HomePage(actions)
     })
 
-    test("Add product to cart", async()=>{
+    test("user login succcessfully", async () => {
         await loginPage.open()
         await loginPage.login("standard_user", "secret_sauce")
         expect(await homePage.isLoaded()).toBe(true)
-        expect(await homePage.isBackpackVisible()).toBe(true)
-        await homePage.addBackpackToCart()
-        let count = await homePage.getCartCount()
-        expect(count).toBe("1")
+
     })
 
-    afterAll(async()=>{
-        await actions.quit()
+    afterAll(async () => {
+        if (actions) {
+            await actions.quit()
+        }
     })
+
 })
