@@ -41,6 +41,7 @@ class HomePage {
     async addBackpackToCart() {
         await this.actions.clickElement(this.elements.backPackAddButton)
     }
+      
 
     async getCartCount() {
         return await this.actions.getText(this.elements.cartBadge)

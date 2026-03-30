@@ -14,8 +14,7 @@ class AIActions {
         this.context = null
         this.page = null
     }
-    // ZeroStep needs a Playwright Test `test` object for context tracking.
-    // Since we are running under Jest (not Playwright Test runner), we build a minimal shim that satisfies the interface ZeroStep actually uses.
+    
     buildTestShim() {
         return {
             info: () => ({ title: 'jest-ai-test' }),
@@ -41,8 +40,6 @@ class AIActions {
         return true
     }
 
-    // locator here is a natural language description
-    // 'the login button' or 'the username input field'
     async clickElement(locator) {
         await ai(`Click ${locator}`, {
             page: this.page,
@@ -69,12 +66,12 @@ class AIActions {
             page: this.page,
             test: this.testContext,
         })
-        //ZeroStep returns a string — normalise it to a boolean
+       
         return String(result).toLowerCase().includes('true')
     }
 
     async getCurrentUrl() {
-        // No AI needed cz this is a direct browser state query, not a DOM interaction
+    
         return this.page.url()
     }
 

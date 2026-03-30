@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:bdd": "cucumber-js phase7-bdd-layer/features --require phase7-bdd-layer/stepDefinitions --require phase7-bdd-layer/support"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "selenium-webdriver": "^4.41.0"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^12.7.0",
     "jest": "^30.3.0"
   }
 }
