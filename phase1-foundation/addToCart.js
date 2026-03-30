@@ -1,40 +1,43 @@
-import { Builder, By, until } from "selenium-webdriver"
-import { Options } from "selenium-webdriver/chrome.js"
+import { Builder, By, until } from "selenium-webdriver";
+import { Options } from "selenium-webdriver/chrome.js";
 
-const options = new Options()
+const options = new Options();
 options.setUserPreferences({
-    "credentials_enable_service": false,
-    "profile.password_manager_enabled": false,
-    "profile.password_manager_leak_detection": false
-})
+  credentials_enable_service: false,
+  "profile.password_manager_enabled": false,
+  "profile.password_manager_leak_detection": false,
+});
 
 let driver = await new Builder()
-    .forBrowser("chrome")
-    .setChromeOptions(options)
-    .build()
+  .forBrowser("chrome")
+  .setChromeOptions(options)
+  .build();
 
-await driver.get("https://www.saucedemo.com")
+await driver.get("https://www.saucedemo.com");
 
-await driver.findElement(By.name("user-name")).sendKeys("standard_user")
+await driver.findElement(By.name("user-name")).sendKeys("standard_user");
 
-await driver.findElement(By.css("input[placeholder='Password']")).sendKeys("secret_sauce")
+await driver
+  .findElement(By.css("input[placeholder='Password']"))
+  .sendKeys("secret_sauce");
 
-await driver.findElement(By.id("login-button")).click()
+await driver.findElement(By.id("login-button")).click();
 
-let url = await driver.getCurrentUrl()
-console.assert(url.includes('inventory'))
+let url = await driver.getCurrentUrl();
+console.assert(url.includes("inventory"));
 
-let product = await driver.findElement(By.xpath("//div[contains(text(),'Sauce Labs Backpack')]"))
-console.assert(product)
+let product = await driver.findElement(
+  By.xpath("//div[contains(text(),'Sauce Labs Backpack')]"),
+);
+console.assert(product);
 
-await driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click()
+await driver.findElement(By.id("add-to-cart-sauce-labs-backpack")).click();
 
-let cart = await driver.findElement(By.css("[data-test='shopping-cart-badge']"))
+let cart = await driver.findElement(
+  By.css("[data-test='shopping-cart-badge']"),
+);
 
-let addedCart = await cart.getText()
-console.assert(addedCart.includes("1"))
+let addedCart = await cart.getText();
+console.assert(addedCart.includes("1"));
 
-
-await driver.quit()
-
-
+await driver.quit();
