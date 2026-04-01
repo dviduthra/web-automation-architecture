@@ -263,7 +263,7 @@ An intelligent agent interprets natural language or Gherkin steps and dynamicall
 - **Business alignment:** BDD syntax bridges gap between technical and non-technical stakeholders.
 - **Zero-maintenance steps:** AI agents dynamically interpret requirements without manual step definitions.
 
-** Framework demonstrates transition from deterministic automation
-to probabilistic AI-assisted testing strategies. ** 
+**Framework demonstrates transition from deterministic automation
+to probabilistic AI-assisted testing strategies.**
 
 ---
