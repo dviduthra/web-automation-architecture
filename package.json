@@ -5,6 +5,7 @@
   "scripts": {
     "test": "jest",
     "test:bdd": "cucumber-js phase7-bdd-layer/features --require phase7-bdd-layer/stepDefinitions --require phase7-bdd-layer/support",
+    "test:agentic": "cucumber-js phase8-agentic-interpreter/features --require phase8-agentic-interpreter/stepDefinitions --require phase8-agentic-interpreter/support --parallel 1",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky"
@@ -14,6 +15,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@google/genai": "^1.47.0",
     "@zerostep/playwright": "^0.1.5",
     "dotenv": "^17.3.1",
     "playwright": "^1.58.2",

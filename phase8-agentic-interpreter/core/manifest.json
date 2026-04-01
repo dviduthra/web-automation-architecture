@@ -1,0 +1,40 @@
+{
+  "LoginPage": {
+    "methods": [
+      {
+        "name": "open",
+        "description": "Navigates to the Swag Labs login page"
+      },
+      {
+        "name": "login",
+        "description": "Login with username and password",
+        "params": ["username", "password"]
+      },
+      {
+        "name": "getErrorMessage",
+        "description": "Returns the text of the login error message"
+      }
+    ]
+  },
+
+  "HomePage": {
+    "methods": [
+      {
+        "name": "isLoaded",
+        "description": "Returns true if inventory page is loaded"
+      },
+      {
+        "name": "isBackpackVisible",
+        "description": "Returns true if the Sauce Labs Backpack is visible"
+      },
+      {
+        "name": "addBackpackToCart",
+        "description": "Clicks the Add to cart button for Sauce Labs Backpack"
+      },
+      {
+        "name": "getCartCount",
+        "description": "Returns the number shown on the shopping cart badge"
+      }
+    ]
+  }
+}
