@@ -6,11 +6,11 @@ A progressive framework evolution from raw procedural scripts to a fully abstrac
 
 ## Overview
 
-This repository documents the full journey of building a production-grade web automation framework in five distinct phases. Each phase is **self-contained and independently runnable**, solving a real engineering problem introduced by the previous one.
+This repository documents the full journey of building a production-grade web automation framework in eight distinct phases. Each phase is **self-contained and independently runnable**, solving a real engineering problem introduced by the previous one.
 
 **Target Application:** [SauceDemo (Swag Labs)](https://www.saucedemo.com)  
-**Tech Stack:** Node.js · JavaScript · Selenium WebDriver · Playwright · Jest  
-**Design Patterns Applied:** Page Object Model (POM) · Facade / Adapter · Factory · Polymorphism
+**Tech Stack:** Node.js · JavaScript · Selenium WebDriver · Playwright · Jest · Cucumber · AI/LLM  
+**Design Patterns Applied:** Page Object Model (POM) · Facade / Adapter · Factory · Polymorphism · AI Agent Pattern
 
 ---
 
@@ -31,11 +31,14 @@ Three test cases are used consistently across all phases to make the architectur
 ```
 web-automation-framework/
 │
-├── phase1-raw-scripts/             # Pure Selenium, no test runner
-├── phase2-jest-runner/             # Selenium + Jest lifecycle management
+├── phase1-foundation/             # Pure Selenium, no test runner
+├── phase2-test-runner/             # Selenium + Jest lifecycle management
 ├── phase3-page-object-model/       # Page Object Model abstraction
 ├── phase4-abstraction-layer/       # Facade pattern — tool isolation
 ├── phase5-multi-tool-framework/    # Factory pattern — Selenium ↔ Playwright swap
+├── phase6-ai-driven/             # AI-powered natural language automation
+├── phase7-bdd-layer/             # Cucumber/Gherkin business-readable tests
+├── phase8-agentic-interpreter/    # AI agent that maps Gherkin to Page Objects
 │
 └── README.md
 ```
@@ -134,6 +137,72 @@ TOOL=playwright npx jest phase5-multi-tool-framework
 
 ---
 
+### Phase 6 — AI-Driven Automation (Natural Language)
+
+**Concept:** Abstract explicit locator management through natural language interaction. Tests use natural language descriptions that AI translates into browser actions.
+
+**Execution:**
+
+```bash
+cd web-automation-architecture
+npm install
+TOOL=playwright npm run test:ai
+```
+
+**What to observe:** No more CSS selectors or XPath. Tests read like plain English instructions:
+
+```js
+await aiActions.clickElement("the login button");
+await aiActions.typeText("the username input field", "standard_user");
+```
+
+---
+
+### Phase 7 — BDD Layer (Cucumber/Gherkin)
+
+**Concept:** Bridge the gap between business requirements and technical implementation using Behavior-Driven Development syntax that non-technical stakeholders can understand and validate.
+
+**Execution:**
+
+```bash
+cd web-automation-architecture
+npm install
+TOOL=playwright npm run test:bdd
+```
+
+**What to observe:** Test cases are pure business language in `.feature` files:
+
+```gherkin
+Scenario: Successful login with valid credentials 
+Given Launch Saucelabs login page
+When Login with username "standard_user" and password "secret_sauce"
+Then Home page should be loaded
+```
+
+---
+
+### Phase 8 — Agentic Interpreter (AI Step Mapping)
+
+**Concept:** No manual step definitions needed. An AI agent dynamically maps Gherkin steps to appropriate Page Object methods at runtime, eliminating the step definition maintenance burden.
+
+**Execution:**
+
+```bash
+cd web-automation-architecture
+npm install
+TOOL=playwright npm run test:agentic
+```
+
+**What to observe:** A single universal step handler interprets any Gherkin step:
+
+```js
+defineStep(/^(.*)$/, universalHandler)
+```
+
+The AI agent maps `"Launch Saucelabs login page"` → `LoginPage.open()` automatically, with caching to optimize API calls.
+
+---
+
 ## Architectural Evolution at a Glance
 
 ```
@@ -142,6 +211,9 @@ Phase 2 → Jest manages lifecycle. Tests are grouped. Assertions are proper.
 Phase 3 → POM separates "What" (tests) from "How" (browser interactions).
 Phase 4 → Facade isolates the tool. Page Objects are tool-agnostic.
 Phase 5 → Factory + Polymorphism. Swap tools at runtime. Zero test changes.
+Phase 6 → AI-driven automation. Natural language eliminates explicit locators.
+Phase 7 → BDD layer. Business-readable Gherkin scenarios bridge gap to stakeholders.
+Phase 8 → Agentic interpreter. AI dynamically maps steps to methods, no manual definitions needed.
 ```
 
 ---
@@ -164,6 +236,10 @@ Encapsulates web elements and interactions into dedicated classes per page. Elim
 
 Both action wrappers honour the same interface contract. This makes them interchangeable without any conditional logic leaking into Page Objects or tests.
 
+### AI Agent Pattern
+
+An intelligent agent interprets natural language or Gherkin steps and dynamically maps them to appropriate framework methods. This eliminates the need for manual step definitions and reduces maintenance overhead as test requirements evolve.
+
 ---
 
 ## Prerequisites
@@ -172,6 +248,8 @@ Both action wrappers honour the same interface contract. This makes them interch
 - Google Chrome (for Selenium phases)
 - ChromeDriver matching your Chrome version (Phase 1–4)
 - Playwright installs its own browsers automatically (Phase 5)
+- ZeroStep API token for Phase 6 (AI-driven automation)
+- Gemini API key for Phase 8 (Agentic interpreter)
 
 ---
 
@@ -181,5 +259,11 @@ Both action wrappers honour the same interface contract. This makes them interch
 - **Scalability:** Adding new pages or tests never touches existing infrastructure.
 - **Tool flexibility:** The framework is not tied to any single browser automation library.
 - **Readability:** Test cases read like plain English acceptance criteria.
+- **AI-enhanced:** Natural language automation eliminates brittle locator maintenance.
+- **Business alignment:** BDD syntax bridges gap between technical and non-technical stakeholders.
+- **Zero-maintenance steps:** AI agents dynamically interpret requirements without manual step definitions.
+
+** Framework demonstrates transition from deterministic automation
+to probabilistic AI-assisted testing strategies. ** 
 
 ---
