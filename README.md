@@ -14,6 +14,16 @@ This repository documents the full journey of building a production-grade web au
 
 ---
 
+
+
+https://github.com/user-attachments/assets/86829299-2125-4b1b-9b26-0744a4836169
+
+
+
+
+
+
+
 ## Core Test Suite
 
 Three test cases are used consistently across all phases to make the architectural evolution tangible and comparable:
