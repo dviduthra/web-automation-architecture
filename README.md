@@ -8,11 +8,14 @@ A progressive framework evolution from raw procedural scripts to a fully abstrac
 
 This repository documents the full journey of building a production-grade web automation framework in nine distinct phases. Each phase is **self-contained and independently runnable**, solving a real engineering problem introduced by the previous one.
 
-**Target Application:** [SauceDemo (Swag Labs)](https://www.saucedemo.com)  
-**Tech Stack:** Node.js · JavaScript · Selenium WebDriver · Playwright · Playwright MCP · Jest · Cucumber · AI/LLM  
+**Target Application:** [SauceDemo (Swag Labs)](https://www.saucedemo.com)
+**Tech Stack:** Node.js · JavaScript · Selenium WebDriver · Playwright · Playwright MCP · Jest · Cucumber · AI/LLM
 **Design Patterns Applied:** Page Object Model (POM) · Facade / Adapter · Factory · Polymorphism · AI Agent Pattern · Autonomous QA
 
----
+https://github.com/user-attachments/assets/86829299-2125-4b1b-9b26-0744a4836169
+
+
+
 
 ## Core Test Suite
 
@@ -310,7 +313,7 @@ An AI-powered QA agent explores applications autonomously, identifies user flows
 - **Autonomous QA:** AI agents explore applications, generate comprehensive test suites, and self-heal broken selectors.
 - **Self-healing tests:** Robust selectors adapt to UI changes, reducing maintenance overhead.
 
-** Framework demonstrates transition from deterministic automation
-to probabilistic AI-assisted testing strategies and fully autonomous QA. ** 
+**Framework demonstrates transition from deterministic automation
+to probabilistic AI-assisted testing strategies and fully autonomous QA.**
 
 ---
